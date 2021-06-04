@@ -9,13 +9,15 @@ MAX_VIEWS_3 = 5000
 MAX_VIEWS_4 = 10000
 MAX_VIEWS_5 = 15000
 MAX_VIEWS_6 = 20000
+MAX_VIEWS_7 = 9999999
 
 SCALE_BY_VIEWS_1 = 2
 SCALE_BY_VIEWS_2 = 1.85
-SCALE_BY_VIEWS_3 = 1.70
+SCALE_BY_VIEWS_3 = 1.7
 SCALE_BY_VIEWS_4 = 1.55
-SCALE_BY_VIEWS_5 = 1.40
+SCALE_BY_VIEWS_5 = 1.4
 SCALE_BY_VIEWS_6 = 1.25
+SCALE_BY_VIEWS_7 = 1.1
 
 def count_price(_price, _SCALE_BY_VIEWS):
     return _price - (_price / _SCALE_BY_VIEWS)
@@ -39,30 +41,34 @@ def count_stats(views, _PRICE_PER_VIEW, _type):
         price *= default
         print_result(price, default, MAX_VIEWS_1, _type)
         
-    if(views > MAX_VIEWS_1 and views <= MAX_VIEWS_2):
+    elif(views > MAX_VIEWS_1 and views <= MAX_VIEWS_2):
         default = SCALE_BY_VIEWS_2
         price *= default
         print_result(price, default, MAX_VIEWS_2, _type)
         
-    if(views > MAX_VIEWS_2 and views <= MAX_VIEWS_3):
+    elif(views > MAX_VIEWS_2 and views <= MAX_VIEWS_3):
         default = SCALE_BY_VIEWS_3
         price *= default
         print_result(price, default, MAX_VIEWS_3, _type)
         
-    if(views > MAX_VIEWS_3 and views <= MAX_VIEWS_4):
+    elif(views > MAX_VIEWS_3 and views <= MAX_VIEWS_4):
         default = SCALE_BY_VIEWS_4
         price *= default
         print_result(price, default, MAX_VIEWS_4, _type)
         
-    if(views > MAX_VIEWS_4 and views <= MAX_VIEWS_5):
+    elif(views > MAX_VIEWS_4 and views <= MAX_VIEWS_5):
         default = SCALE_BY_VIEWS_5
         price *= default
         print_result(price, default, MAX_VIEWS_5, _type)
         
-    if(views > MAX_VIEWS_5 and views <= MAX_VIEWS_6):
+    elif(views > MAX_VIEWS_5 and views <= MAX_VIEWS_6):
         default = SCALE_BY_VIEWS_6
         price *= default
         print_result(price, default, MAX_VIEWS_6, _type)
+    else:
+        default = SCALE_BY_VIEWS_7
+        price *= default
+        print_result(price, default, MAX_VIEWS_7, _type)
 
 def main():
     while True:
