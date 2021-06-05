@@ -19,36 +19,37 @@ SCALE_BY_VIEWS_5 = 1.4
 SCALE_BY_VIEWS_6 = 1.25
 SCALE_BY_VIEWS_7 = 1.1
 
-def count_price(_price, _SCALE_BY_VIEWS):
-    return _price - (_price / _SCALE_BY_VIEWS)
+def count_price(price, scale_by_views):
+    return price - (price / scale_by_views)
 
-def print_result(_price, _default, _MAX_VIEWS, _type):
-    _price *= _default
+def print_result(price, over_price, max_views, type_of_views):
+    blogger_price = price / PARTNER
+    price *= over_price
 
-    print('цена', _type, 'для рекла:', int(_price), '\n')
-    print('наценка:', _default, 'до', _MAX_VIEWS, 'охвата')
-    print('сумма наценки:', int(count_price(_price, _default)))
-    print('партнер заработает:', int(count_price(_price, _default) / PARTNER))
-    print('мы заработаем:', int(count_price(_price, _default) - count_price(_price, _default) / PARTNER))
+    print('цена', type_of_views, 'для рекла:', int(price), '\n')
+    print('наценка:', over_price, 'до', max_views, 'охвата')
+    print('сумма наценки:', int(count_price(price, over_price)))
+    print('партнер заработает:', int(blogger_price))
+    print('мы заработаем:', int(count_price(price, over_price) - blogger_price))
 
-def count_stats(views, _PRICE_PER_VIEW, _type):
-    price = views * _PRICE_PER_VIEW
-    print('цена', _type, 'для блогера:', int(price))
+def count_stats(views, price_per_view, type_of_views):
+    price = views * price_per_view
+    print('цена', type_of_views, 'для блогера:', int(price))
 
     if(views <= MAX_VIEWS_1):
-        print_result(price, SCALE_BY_VIEWS_1, MAX_VIEWS_1, _type)
+        print_result(price, SCALE_BY_VIEWS_1, MAX_VIEWS_1, type_of_views)
     elif(views > MAX_VIEWS_1 and views <= MAX_VIEWS_2):
-        print_result(price, SCALE_BY_VIEWS_2, MAX_VIEWS_2, _type)
+        print_result(price, SCALE_BY_VIEWS_2, MAX_VIEWS_2, type_of_views)
     elif(views > MAX_VIEWS_2 and views <= MAX_VIEWS_3):
-        print_result(price, SCALE_BY_VIEWS_3, MAX_VIEWS_3, _type)
+        print_result(price, SCALE_BY_VIEWS_3, MAX_VIEWS_3, type_of_views)
     elif(views > MAX_VIEWS_3 and views <= MAX_VIEWS_4):
-        print_result(price, SCALE_BY_VIEWS_4, MAX_VIEWS_4, _type)
+        print_result(price, SCALE_BY_VIEWS_4, MAX_VIEWS_4, type_of_views)
     elif(views > MAX_VIEWS_4 and views <= MAX_VIEWS_5):
-        print_result(price, SCALE_BY_VIEWS_5, MAX_VIEWS_5, _type)
+        print_result(price, SCALE_BY_VIEWS_5, MAX_VIEWS_5, type_of_views)
     elif(views > MAX_VIEWS_5 and views <= MAX_VIEWS_6):
-        print_result(price, SCALE_BY_VIEWS_6, MAX_VIEWS_6, _type)
+        print_result(price, SCALE_BY_VIEWS_6, MAX_VIEWS_6, type_of_views)
     else:
-        print_result(price, SCALE_BY_VIEWS_7, MAX_VIEWS_7, _type)
+        print_result(price, SCALE_BY_VIEWS_7, MAX_VIEWS_7, type_of_views)
 
 def main():
     while True:
